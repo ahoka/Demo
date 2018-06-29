@@ -8,13 +8,14 @@ namespace UserService.Controllers
     [Route("/users")]
     public class UsersController : Controller
     {
+        object result = new[] { new { Name = "John Doe", Id = Guid.NewGuid() },
+                                new { Name = "Jack Smith", Id = Guid.NewGuid() }
+                              };
+
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(new[] {
-                new { Name = "John Doe" },
-                new { Name = "Jack Smith" }
-            });
+            return Ok(result);
         }
     }
 }

@@ -9,7 +9,8 @@ namespace BetService
     public class BetController : Controller
     {
         [HttpGet]
-        public IActionResult GetByUser(Guid id)
+        [Route("{id}")]
+        public IActionResult GetByUser([FromRoute] Guid id)
         {
             return Ok(new { Bets = Array.Empty<string>() });
         }

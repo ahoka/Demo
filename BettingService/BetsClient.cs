@@ -9,7 +9,7 @@ namespace BettingService
     public interface IBetsApi
     {
         [Get("/bets/{id}")]
-        Task<List<Bet>> All([Path] Guid id);
+        Task<Bet> BetsByUser([Path] Guid id);
     }
 
     public class Bet
@@ -19,16 +19,16 @@ namespace BettingService
 
     public class BetsClient
     {
-        IUsers usersApi;
+        IBetsApi bets;
 
         public BetsClient()
         {
-            usersApi = RestClient.For<IUsers>("http://localhost:5000");
+            bets = RestClient.For<IBetsApi>("http://localhost:5002");
         }
 
-        public Task<List<User>> ListUsers()
+        public Task<Bet> Bets(Guid id)
         {
-            return usersApi.All();
+            return bets.BetsByUser(id);
         }
     }
 }

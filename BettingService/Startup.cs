@@ -37,6 +37,7 @@ namespace BettingService
             });
 
             services.AddSingleton<UsersClient>();
+            services.AddSingleton<BetsClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
